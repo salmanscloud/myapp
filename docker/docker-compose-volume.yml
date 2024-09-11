@@ -1,0 +1,9 @@
+---
+version: "2"
+services:
+  web1:
+    image: nginx
+    volumes:
+      - ./mywebsite:/usr/share/nginx/html
+    ports:
+      - "80:80"

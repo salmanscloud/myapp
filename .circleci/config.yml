@@ -1,0 +1,28 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/node:14
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.7
+      - run:
+          name: Build Docker image
+          command: docker build -t myapps .
+      - run:
+          name: Login to Docker Hub
+          command: |
+            echo "2-D*S$Pb6@Lh4ve" | docker login -u "1998salman" --password-stdin
+      - run:
+          name: Tag Docker image
+          command: docker tag myapps:latest $DOCKERHUB_USERNAME/myapps:latest
+      - run:
+          name: Push Docker image
+          command: docker push $DOCKERHUB_USERNAME/myapps:latest
+
+workflows:
+  version: 2
+  build_and_push:
+    jobs:
+      - build
