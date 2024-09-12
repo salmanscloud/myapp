@@ -33,4 +33,4 @@ jobs:
         with:
           context: dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/myapp:latest
+          tags: 1998salman/noderepo:latest
