@@ -1,15 +1,19 @@
-name: Docker Build and Push
+name: Build and Push Docker image
 
 on:
   push:
     branches:
-      - develop-circleci
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  build-and-push:
+  build:
     runs-on: ubuntu-latest
-    
+
     steps:
+<<<<<<< HEAD
     - name: Check out code
       uses: actions/checkout@v2
     
@@ -30,3 +34,26 @@ jobs:
         tags: |
           ${{ secrets.DOCKERHUB_USERNAME }}/mywebsite:latest
           
+=======
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: dockerfile
+          push: true
+          tags: 1998salman/noderepo:latest
+>>>>>>> 961f28cf4b1d992d39265e42fc38677ff8ba06b3
