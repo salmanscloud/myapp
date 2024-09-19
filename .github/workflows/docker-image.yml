@@ -28,5 +28,5 @@ jobs:
         context: .
         push: true
         tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/mywebsite:latest
+          ${{ secrets.DOCKERHUB_USERNAME }}/mywebite:latest
           
