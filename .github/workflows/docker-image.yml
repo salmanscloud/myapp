@@ -28,4 +28,4 @@ jobs:
         context: .
         push: true
         tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/salman:1      
+          ${{ secrets.DOCKERHUB_USERNAME }}salman:1      
